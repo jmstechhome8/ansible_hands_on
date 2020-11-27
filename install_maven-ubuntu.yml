@@ -1,0 +1,10 @@
+---
+- hosts: unode
+  become: yes
+  gather_facts: False
+  tasks:	
+    - name: Installing maven on ubuntu
+      apt:
+        name: maven
+        state: absent
+

@@ -1,0 +1,11 @@
+---
+- hosts: unode
+  become: yes
+  tasks:
+    - name: download maven and install
+      shell: |
+        wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
+        sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
+        apt install -y apache-maven
+        mvn --version
+

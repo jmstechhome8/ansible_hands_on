@@ -1,0 +1,19 @@
+---
+- hosts: node
+  tasks: 
+  - name: create a first file
+    file: 
+      dest: today1.txt
+      state: touch
+      mode: 0400
+  - name: create second file
+    file:
+      dest: today2.txt
+      state: touch
+      mode: 0400
+  - name: create a third file
+    file:
+      dest: today3.txt
+      state: touch
+      mode: 0400
+

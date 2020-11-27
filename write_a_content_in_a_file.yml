@@ -1,0 +1,10 @@
+- hosts: node
+  tasks:
+  - name: Create file with content example
+    copy:
+      dest: today.txt
+      content: |
+        Madhu Sudhan Reddy
+        Banglore
+        DevOps Architech
+

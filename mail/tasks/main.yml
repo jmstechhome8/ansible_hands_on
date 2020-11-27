@@ -1,0 +1,6 @@
+---
+# tasks file for mail
+- name: get the username
+  debug:
+   msg: "myname is {{ username }} "
+

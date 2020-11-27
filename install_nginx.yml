@@ -1,0 +1,30 @@
+---
+- name: Install nginx
+  hosts: ap-south-1
+  become: true
+
+  tasks:
+  - name: install nginx
+    command: amazon-linux-extras install nginx1.12=latest -y
+    args:
+      creates: /sbin/nginx
+
+  - name: Insert Index Page
+    template:
+      src: indexssssssssss.html
+      dest: /usr/share/nginx/html/index.html
+    ignore_errors: yes
+    notify:
+      - Restart nginx
+
+  - name: Start nginx
+    service:
+      name: nginx
+      state: started
+  handlers:
+   - name: Restart nginx
+     service:
+      name: nginx
+      state: restarted
+
+

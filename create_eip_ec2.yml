@@ -1,0 +1,23 @@
+-   name: love with eip
+    hosts: server
+    connection: local
+    gather_facts: False
+    remote_user: ec2-user
+    tasks:
+      - name: provision new instances with ec2
+        ec2:
+          keypair: akasamnehadura
+          instance_type: t2.micro
+          image: ami-026669ec456129a70
+          region: ap-south-1
+          wait: yes
+          count: 1
+        register: ec2
+      - name: allocate a new elastic IP without associating it to anything
+        ec2_eip:
+           region: ap-south-1
+           state: present
+           device_id: "{{ item }}"
+        loop: "{{ ec2.instance_ids }}"
+        register: eip
+

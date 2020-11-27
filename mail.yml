@@ -1,0 +1,7 @@
+---
+- hosts: server
+  become: yes
+  gather_facts: False
+  roles:
+     - mail
+

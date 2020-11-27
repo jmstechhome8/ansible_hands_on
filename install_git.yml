@@ -1,0 +1,16 @@
+---
+- hosts: unode
+  become: yes
+  gather_facts: False
+  tasks:	
+    - name: Installing git
+      apt:
+        name: git
+        state: present
+      tags: install
+    - name: UNInstalling git
+      apt:
+        name: git
+        state: absent
+      tags: uninstall
+
